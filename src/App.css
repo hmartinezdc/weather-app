@@ -1,0 +1,110 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 409px;
+    height: 280.35px;
+    background: linear-gradient(89.52deg,hsla(208, 100%, 50%, 0.2),hsla(198, 69%, 56%, 0.4));
+    box-shadow: 0px 4.8546px 4.8546px rgba(0, 0, 0, 0.25);
+    border-radius: 26.7003px;
+}
+.container__parameters li {
+    list-style-type: none;
+    color:#d8e4f1;
+    margin-left: 10px;
+}
+.container__country { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #75edff;
+    font-size: 13px;
+    padding-top: 20px;
+    margin-left: 10px;
+}
+.container__country h2 {
+    font-weight: 400;
+}
+.container__img {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    top: -90px;
+    right: -45px;
+}
+.container__img img {
+    width: 100%;
+}
+.container__celcius {
+    font-weight: 400;
+    font-size: 95px;
+    /* width: 151px;
+    height: 115px; */
+    color: #74ffb0;
+    margin-block-start: 0;
+}
+/* .card__img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+} */
+.app__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+.app__background img {
+    height: 100%;
+    /* width: 100%; */
+    opacity: 0.5;
+}
+.app__title {
+    position: absolute;
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
+    left: 50px;
+    top: 45px;
+}
+@media (max-width: 576px) {
+    .container {
+        width: 348px;
+        height: 216px;
+        
+    }
+    .container__img {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 250px;
+        height: 250px;
+        top: -80px;
+        right: -5px;
+        overflow: hidden;
+    }
+    .container__img img {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .container__parameters li {
+        font-size: 11px;
+    }
+    .container__country { 
+        font-size: 10px;
+    }
+    .container__celcius {
+        font-size: 75px;
+    }
+}
