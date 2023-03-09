@@ -22,7 +22,8 @@ const Icons = (icon) => {
       icon = '/public/icons/clear-day.svg';
       break;
     case 'Clouds':
-      icon = '/public/icons/gloudfigma.svg';
+      icon =
+        'https://drive.google.com/uc?export=view&id=1hFOLZW9_6zgX-NBEoE_O0tx-5bYJULrz';
       break;
 
     default:
