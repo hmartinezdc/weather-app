@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import backGround from '../../utils/backGround';
 import Button from '../Button/Button';
-
-import icons from '/src/utils/icons';
+import Icons from '../Icons';
 
 function CountryCard({ icon, country }) {
   const [changeTem, getChangeTem] = useState(true);
@@ -44,7 +43,7 @@ function CountryCard({ icon, country }) {
               src={`http://openweathermap.org/img/wn/${country.weather[0].icon}@2x.png`}
               alt=""
             /> */}
-          <img src={icons(icon)} alt="icon Weather" />
+          <img src={Icons(icon)} alt="icon Weather" />
         </div>
         <Button button={degreeText} changeTem={() => setDegreeText(!degreeText)} />
       </div>
