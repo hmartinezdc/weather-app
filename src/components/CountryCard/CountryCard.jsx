@@ -18,7 +18,6 @@ function CountryCard({ icon, country }) {
         <img src={backGround(icon)} alt="" />
       </div>
       <div className="container">
-        {/* <img src="/public/card.svg" alt="card" className="card__img" /> */}
         {!changeTem ? (
           <h1 className="container__celcius">{parseInt(country?.main.temp)}°</h1>
         ) : (
