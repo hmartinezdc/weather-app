@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import backGround from '../../utils/backGround';
 import Button from '../Button/Button';
 import Icons from '../Icons';
 
 function CountryCard({ icon, country }) {
-  const [changeTem, getChangeTem] = useState(true);
-  const [degreeText, setDegreeText] = useState(false);
+  const [changeTem, setChangeTem] = useState(false);
 
-  useEffect(() => {
-    getChangeTem(!changeTem);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [degreeText]);
   return (
     <>
       <h1 className="app__title">Weather app</h1>
@@ -44,7 +39,7 @@ function CountryCard({ icon, country }) {
             /> */}
           <img src={Icons(icon)} alt="icon Weather" />
         </div>
-        <Button button={degreeText} changeTem={() => setDegreeText(!degreeText)} />
+        <Button changebutton={changeTem} changeTem={() => setChangeTem(!changeTem)} />
       </div>
     </>
   );

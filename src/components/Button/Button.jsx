@@ -1,11 +1,11 @@
 import React from 'react';
 import './Button.css';
 
-const Button = ({ changeTem, button }) => {
+const Button = ({ changeTem, changebutton }) => {
   return (
     <>
       <button className="button" onClick={changeTem}>
-        Cambiar a {!button ? 'F°' : 'C°'}
+        Cambiar a {!changebutton ? 'F°' : 'C°'}
       </button>
     </>
   );
