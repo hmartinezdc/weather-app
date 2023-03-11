@@ -1,5 +1,5 @@
 import React from 'react';
-import './SeeKer.css';
+
 const Seeker = ({ setSeeker }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
