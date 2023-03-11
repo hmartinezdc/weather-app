@@ -15,10 +15,9 @@ const App = () => {
 
     try {
       const res = await axios.get(weatherUrl);
-      if (!cityName) {
-        setWeather(res.data);
-        setIcon(res.data.weather[0].main);
-      }
+
+      setWeather(res.data);
+      setIcon(res.data.weather[0].main);
     } catch (error) {
       console.log(error);
     }
@@ -28,28 +27,27 @@ const App = () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=e356fc8d5161ab16bc0a376d73093d61&units=metric`;
     try {
       const res = await axios.get(url);
-
-      if (cityName) {
-        setWeather(res.data);
-        setIcon(res.data.weather[0].main);
-      }
+      setWeather(res.data);
+      setIcon(res.data.weather[0].main);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        loadWeatherData(latitude, longitude);
-      },
-      (error) => {
-        throw error;
-      },
-    );
-    if (cityName) loadCityData();
+    if (!cityName) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          loadWeatherData(latitude, longitude);
+        },
+        (error) => {
+          throw error;
+        },
+      );
+    } else loadCityData();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cityName]);
 

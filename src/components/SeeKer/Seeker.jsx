@@ -16,10 +16,10 @@ const Seeker = ({ setSeeker }) => {
         <input
           className="app__form__input"
           type="text"
-          placeholder="Type country name"
+          placeholder="Type city name"
           id="cityName"
         />
-        <input className="app__form__submit" type="submit" value="Search" />
+        {/* <input className="app__form__submit" type="submit" value="Search" /> */}
       </form>
     </>
   );
