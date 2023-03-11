@@ -1,35 +1,67 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
-import CountryCard from './components/CountryCard/CountryCard';
+import WeatherCard from './components/WeatherCard/WeatherCard';
 import Loader from './components/Loader/Loader';
 
 const App = () => {
-  const [country, setCountry] = useState(null);
+  const [weather, setWeather] = useState(null);
   const [icon, setIcon] = useState('');
+  const [cityName, setCityName] = useState('');
 
-  const loadCountryData = async () => {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      const keyApi = 'e356fc8d5161ab16bc0a376d73093d61';
-      const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${keyApi}&units=metric&lang=es`;
+  const loadWeatherData = async (latitude, longitude) => {
+    const apiKey = 'e356fc8d5161ab16bc0a376d73093d61';
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
-      try {
-        const res = await axios.get(weatherUrl);
-        setCountry(res.data);
-        console.log(res.data);
+    try {
+      const res = await axios.get(weatherUrl);
+      if (!cityName) {
+        setWeather(res.data);
         setIcon(res.data.weather[0].main);
-      } catch (error) {
-        console.log(error);
       }
-    });
+    } catch (error) {
+      console.log(error);
+    }
   };
-  useEffect(() => {
-    loadCountryData();
-  }, []);
 
-  return <>{!country ? <Loader /> : <CountryCard icon={icon} country={country} />}</>;
+  const loadCityData = async () => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=e356fc8d5161ab16bc0a376d73093d61&units=metric`;
+    try {
+      const res = await axios.get(url);
+
+      if (cityName) {
+        setWeather(res.data);
+        setIcon(res.data.weather[0].main);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        loadWeatherData(latitude, longitude);
+      },
+      (error) => {
+        throw error;
+      },
+    );
+    if (cityName) loadCityData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cityName]);
+
+  return (
+    <>
+      {!weather ? (
+        <Loader />
+      ) : (
+        <WeatherCard icon={icon} weather={weather} setCityName={setCityName} />
+      )}
+    </>
+  );
 };
 
 export default App;
