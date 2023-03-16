@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import backGround from '../../utils/backGround';
 import Button from '../Button/Button';
+import Footer from '../Footer/Footer';
 import Icons from '../Icons';
 import Seeker from '../SeeKer/Seeker';
 
@@ -11,8 +12,17 @@ function WeatherCard({ icon, weather, setCityName }) {
     <>
       <h1 className="app__title">Weather app</h1>
 
-      <div className="app__background">
-        <img src={backGround(icon)} alt="" />
+      <div
+        className="app__background"
+        style={{
+          backgroundImage: `linear-gradient(rgba(5, 43, 65, 0.5), rgba(3, 31, 56, 0.5)), url(${backGround(
+            icon,
+          )})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* <img src={backGround(icon)} alt="" /> */}
       </div>
       <div className="container">
         <Seeker setSeeker={setCityName} />
@@ -43,6 +53,7 @@ function WeatherCard({ icon, weather, setCityName }) {
 
         <Button changebutton={changeTem} changeTem={() => setChangeTem(!changeTem)} />
       </div>
+      <Footer />
     </>
   );
 }

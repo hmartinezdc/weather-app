@@ -17,6 +17,7 @@ const App = () => {
       const res = await axios.get(weatherUrl);
 
       setWeather(res.data);
+      console.log(res);
       setIcon(res.data.weather[0].main);
     } catch (error) {
       console.log(error);
