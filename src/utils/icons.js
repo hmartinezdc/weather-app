@@ -1,4 +1,4 @@
-const Icons = (icon) => {
+export const getIconsSvg = (icon) => {
   switch (icon) {
     case 'Thunderstorm':
       icon = '/icons/thunderstorms-rain.svg';
@@ -31,5 +31,3 @@ const Icons = (icon) => {
   }
   return icon;
 };
-
-export default Icons;
