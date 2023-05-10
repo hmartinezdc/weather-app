@@ -1,42 +1,38 @@
 import React, { useState } from 'react';
 import Button from '../Button/Button';
 import Seeker from '../SeeKer/Seeker';
-import Footer from '../Footer/Footer';
 import { getBackground } from '../../utils/getBackground';
 import { getIcons } from '../../utils/getIcons';
-import { celsiusToFahrenheit } from '../../utils/celsiusToFahrenheit';
 
-function WeatherCard({ icon, weather, setCityName }) {
+function WeatherCard({ icon, weather, setCityName, isActiveDarck }) {
   const [changeTem, setChangeTem] = useState(false);
   return (
     <>
-      <h1 className="app__title">Weather app</h1>
       <div
-        className="app__background"
+        className={isActiveDarck ? 'app__background  active' : 'app__background'}
         style={{
-          backgroundImage: `linear-gradient(rgba(5, 43, 65, 0.5), rgba(3, 31, 56, 0.5)), url(${getBackground(
-            icon,
-          )})`,
-          backgroundSize: 'cover',
+          backgroundImage: `url(${getBackground(icon)})`,
           backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          transition: 'all .6s ',
         }}
-      >
-        {/* <img src={backGround(icon)} alt="" /> */}
-      </div>
-      <main className="container">
+      ></div>
+      <main className={isActiveDarck ? 'container  active' : 'container'}>
         <Seeker setSeeker={setCityName} />
         {!changeTem ? (
-          <h1 className="container__celcius">{weather.main.temp.toFixed(0)}°</h1>
+          <p className="container__celcius">
+            {weather.main.temp.toFixed(0)}° <span>C</span>
+          </p>
         ) : (
-          <h1 className="container__celcius">
-            {celsiusToFahrenheit(weather.main.temp).toFixed(0)}&deg;
-          </h1>
+          <p className="container__celcius">
+            {weather.main.temp_f.toFixed(0)}&deg; <span>F</span>
+          </p>
         )}
         {!changeTem ? (
           <ul className="container__parameters">
             <li>Viento: {weather.wind.speed}m/s</li>
             <li>Nubosidad: {weather.clouds.all}%</li>
-            <li>Presion: {weather.main.pressure}hPa</li>
+            <li>Presión: {weather.main.pressure}hPa</li>
           </ul>
         ) : (
           <ul className="container__parameters">
@@ -47,13 +43,18 @@ function WeatherCard({ icon, weather, setCityName }) {
         )}
 
         <div className="container__country">
-          <h1>
+          <i className="fa-sharp fa-solid fa-location-dot"></i>
+          <h1 className="container__country--city container__country--flex">
             {weather.name}, {weather.sys.country}
           </h1>
           {!changeTem ? (
-            <h2>{weather.weather[0].description}</h2>
+            <h2 className="container__country--description">
+              {weather.weather[0].description}
+            </h2>
           ) : (
-            <h2>{weather.weather[0].descriptionLang}</h2>
+            <h2 className="container__country--description">
+              {weather.weather[0].descriptionLang}
+            </h2>
           )}
         </div>
         <div className="container__icon">
@@ -61,7 +62,6 @@ function WeatherCard({ icon, weather, setCityName }) {
         </div>
         <Button changebutton={changeTem} setChangeTem={setChangeTem} />
       </main>
-      <Footer />
     </>
   );
 }

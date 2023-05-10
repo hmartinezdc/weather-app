@@ -17,14 +17,17 @@ export const getCurrentWeather = async (lat, lon) => {
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=e356fc8d5161ab16bc0a376d73093d61`,
     );
 
-    // return res.data;
     const weatherInfo = {
       name: res.data.name,
+      dt: res.data.dt,
+      timezone: res.data.timezone,
       clouds: {
         all: res.data.clouds.all,
       },
       sys: {
         country: res.data.sys.country,
+        sunrise: res.data.sys.sunrise,
+        sunset: res.data.sys.sunset,
       },
       wind: {
         speed: res.data.wind.speed,

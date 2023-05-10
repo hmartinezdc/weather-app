@@ -19,7 +19,6 @@ const Seeker = ({ setSeeker }) => {
           placeholder="Type city name"
           id="cityName"
         />
-        {/* <input className="app__form__submit" type="submit" value="Search" /> */}
       </form>
     </>
   );

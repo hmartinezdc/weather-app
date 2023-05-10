@@ -5,7 +5,7 @@ const Button = ({ changebutton, setChangeTem }) => {
   return (
     <>
       <button className="button" onClick={() => setChangeTem(!changebutton)}>
-        Cambiar a {!changebutton ? 'F°' : 'C°'}
+        {!changebutton ? 'Cambiar a F°' : 'Change to C°'}
       </button>
     </>
   );
