@@ -74,19 +74,13 @@
 }
 .app__background::after {
   content: '';
-  width: 100%;
-  min-height: 100vh;
-  height: 10px;
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   background-image: linear-gradient(rgba(5, 43, 65, 0.5), rgba(3, 31, 56, 0.7));
-  transition: 1s ease all;
 }
 .app__background.active::after {
-  background-image: linear-gradient(rgba(5, 43, 65, 0.3), rgba(3, 31, 56, 0.3));
+  background-image: linear-gradient(rgba(5, 43, 65, 0.1), rgba(3, 31, 56, 0.2));
 }
-
 .app__title {
   position: absolute;
   color: white;
