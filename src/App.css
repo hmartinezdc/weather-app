@@ -1,163 +1,184 @@
 .container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 20px 20px; 
-    width: 409px;
-    height: 280.35px;
-    
-    background: linear-gradient(89.52deg,rgba(11, 132, 125, .5),rgba(7, 117, 164, .5));
-    box-shadow: 0px 4.8546px 4.8546px rgba(0, 0, 0, 0.25);
-    border-radius: 26.7003px;
-    transition: .5s ease all;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px 20px;
+  width: 409px;
+  height: 280.35px;
+
+  background: linear-gradient(89.52deg, rgba(11, 132, 125, 0.6), rgba(7, 117, 164, 0.6));
+  box-shadow: 0px 4.8546px 4.8546px rgba(0, 0, 0, 0.25);
+  border-radius: 26.7003px;
+  transition: 0.5s ease all;
 }
 .container.active {
-    background: linear-gradient(89.52deg,rgba(11, 132, 125, .7),rgba(7, 117, 164, .6));
+  background: linear-gradient(89.52deg, rgba(11, 132, 125, 0.7), rgba(7, 117, 164, 0.6));
 }
-.container__parameters>li {
-    list-style: none;
-    color:#d8e4f1;
+.container__parameters > li {
+  list-style: none;
+  color: #d8e4f1;
 }
-.container__country { 
-    display: flex;
-    align-items: center;
-    flex: 1;
-    gap: .5em;
-    color: hsl(189, 100%, 80%);
-    padding-top: 1em;
+.container__country {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 0.5em;
+  color: hsl(189, 100%, 80%);
+  padding-top: 1em;
 }
-.container__country>i {
-    padding-top: 2px;
-    font-size: 1rem;
+.container__country > i {
+  padding-top: 2px;
+  font-size: 1rem;
 }
 .container__country--city {
-    font-size: 1.5rem;
-    font-weight: 600;
-    flex: 10 1 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  flex: 10 1 0;
 }
 .container__country--description {
-    font-size: 1.3rem;
-    font-weight: normal;
-    text-align: center;
-    flex: 7 1 0;
+  font-size: 1.3rem;
+  font-weight: normal;
+  text-align: center;
+  flex: 7 1 0;
 }
 .container__icon {
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    top: -90px;
-    right: -45px;
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  top: -90px;
+  right: -45px;
 }
 .container__icon img {
-    width: 100%;
+  width: 100%;
 }
 .container__celcius {
-    position: relative;
-    font-weight: 400;
-    font-size: 5.5rem;
-    color: #ffffff;
-    height: fit-content;
-    width: fit-content;
+  position: relative;
+  font-weight: 400;
+  font-size: 5.5rem;
+  color: #ffffff;
+  height: fit-content;
+  width: fit-content;
 }
 /* para borrar el cambio */
-.container__celcius>span {
-    position: absolute;
-    bottom: 0.38em;
-    right: 0.12em;
-    font-size: 0.35em;
+.container__celcius > span {
+  position: absolute;
+  bottom: 0.38em;
+  right: 0.12em;
+  font-size: 0.35em;
 }
 .app__background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 .app__background::after {
-    content: "";
-    width: 100%;
-    min-height: 100vh;
-    height: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(rgba(5, 43, 65, 0.5), rgba(3, 31, 56, .7));
-    transition: 1s ease all;
+  content: '';
+  width: 100%;
+  min-height: 100vh;
+  height: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(rgba(5, 43, 65, 0.5), rgba(3, 31, 56, 0.7));
+  transition: 1s ease all;
 }
 .app__background.active::after {
-    background-image: linear-gradient(rgba(5, 43, 65, .3), rgba(3, 31, 56, .3));
+  background-image: linear-gradient(rgba(5, 43, 65, 0.3), rgba(3, 31, 56, 0.3));
 }
 
 .app__title {
-    position: absolute;
-    color: white;
-    font-weight: 600;
-    font-size: 1.85rem;
-    left: 20%;
-    top: 45px;
-    
+  position: absolute;
+  color: white;
+  font-weight: 600;
+  font-size: 1.85rem;
+  left: 20%;
+  top: 45px;
 }
 .app__form {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  position: absolute;
+  top: -90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  z-index: 2;
+  
 }
 .app__form__input {
-    background-color: white;
-    padding: 0;
-    outline: none;
-    width: 250px;
-    height: 35px;
-    color: black;
-    text-align: center;
-    border-radius: 10px;
-    border-width: 0;
-}
-.app__form__input::placeholder {
-    font-weight: 400;
-    padding: 0px;
-    margin: 0px;
-
+  height: 35px;
+  border-radius: 0.5em;
+  text-align: center;
+  font-size: .9rem;
+  border: 2px solid  transparent;
+  flex: 1;
 }
 .app__form__input:focus {
-    outline-color: #61DAFA;
+  outline-color: #61dafa;
 }
-
+.app__form__button {
+  border: 2px solid transparent;
+  border-radius: 0.5em;
+  width: 30px;
+  background: rgba(7, 117, 164, 0.8);
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.hour {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -130px;
+  color: white;
+  font-weight: 600;
+}
+@media (hover: hover) {
+  .app__form__button:hover {
+    background: hsla(177, 85%, 28%, 0.8);
+    border: 2px solid white;
+  }
+}
 @media (max-width: 992px) {
-    .app__title {
-        left: 8%;
-    }
+  .app__title {
+    left: 8%;
+  }
 }
-@media (max-width: 768px){
-    .app__title {
-        left: 5%;
-    }
+@media (max-width: 768px) {
+  .app__title {
+    left: 5%;
+  }
+  .app__form__button:active {
+    background: hsla(177, 85%, 28%, 0.8);
+    border: 2px solid white;
+  }
 }
 @media (max-width: 576px) {
-    .container {
-        width: 348px;
-        height: 230px;
-    }
-    .app__title {
-        left: 5%;
-        top: 30px;
-    }
-    .container__icon {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 250px;
-        height: 250px;
-        top: -70px;
-        right: -5px;
-        overflow: hidden;
-    }
-    .container__parameters li {
-        font-size: .8rem;
-    }
-    .container__celcius {
-        font-size: 4.2rem;
-    }
+  .container {
+    width: 348px;
+    height: 230px;
+  }
+  .app__title {
+    left: 5%;
+    top: 30px;
+  }
+  .container__icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    top: -70px;
+    right: -5px;
+    overflow: hidden;
+  }
+  .container__parameters li {
+    font-size: 0.8rem;
+  }
+  .container__celcius {
+    font-size: 4.2rem;
+  }
 }

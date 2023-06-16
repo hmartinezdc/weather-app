@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { celsiusToFahrenheit } from '../utils/celsiusToFahrenheit';
+import { getHourByCity } from '../utils/getHourCity';
 
 export const getCurrentWeather = async (lat, lon) => {
   try {
@@ -19,6 +20,7 @@ export const getCurrentWeather = async (lat, lon) => {
 
     const weatherInfo = {
       name: res.data.name,
+      hour: getHourByCity(res.data.dt, res.data.timezone),
       dt: res.data.dt,
       timezone: res.data.timezone,
       clouds: {

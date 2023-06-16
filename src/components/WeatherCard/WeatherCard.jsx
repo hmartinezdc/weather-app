@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../Button/Button';
 import Seeker from '../SeeKer/Seeker';
 import { getBackground } from '../../utils/getBackground';
 import { getIcons } from '../../utils/getIcons';
+import { getHourByCity } from '../../utils/getHourCity';
 
-function WeatherCard({ icon, weather, setCityName, isActiveDarck }) {
+function WeatherCard({ icon, weather, isActiveDarck, onSubmit }) {
   const [changeTem, setChangeTem] = useState(false);
+
+  const [currentTime, setCurrentTime] = useState(
+    getHourByCity(weather.dt, weather.timezone),
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(getHourByCity(weather.dt, weather.timezone));
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [weather.timezone]);
+
   return (
     <>
       <div
@@ -18,7 +35,7 @@ function WeatherCard({ icon, weather, setCityName, isActiveDarck }) {
         }}
       ></div>
       <main className={isActiveDarck ? 'container  active' : 'container'}>
-        <Seeker setSeeker={setCityName} />
+        <Seeker onSubmit={onSubmit} changeLangInput={changeTem} />
         {!changeTem ? (
           <p className="container__celcius">
             {weather.main.temp.toFixed(0)}° <span>C</span>
@@ -60,6 +77,10 @@ function WeatherCard({ icon, weather, setCityName, isActiveDarck }) {
         <div className="container__icon">
           <img src={getIcons(icon)} alt="icon Weather" />
         </div>
+        <p className="hour">
+          {/* {weather.hour}  */}
+          {currentTime}
+        </p>
         <Button changebutton={changeTem} setChangeTem={setChangeTem} />
       </main>
     </>

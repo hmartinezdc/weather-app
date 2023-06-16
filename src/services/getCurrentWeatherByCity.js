@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { celsiusToFahrenheit } from '../utils/celsiusToFahrenheit';
+import { getHourByCity } from '../utils/getHourCity';
 
 export const getCurrentWeatherByCity = async (cityName) => {
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=e356fc8d5161ab16bc0a376d73093d61&units=metric&lang=es`;
@@ -13,6 +14,7 @@ export const getCurrentWeatherByCity = async (cityName) => {
     const weatherDataByCity = {
       cod: res.data.cod,
       name: res.data.name,
+      hour: getHourByCity(res.data.dt, res.data.timezone),
       dt: res.data.dt,
       timezone: res.data.timezone,
       clouds: {

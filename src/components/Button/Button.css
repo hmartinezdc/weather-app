@@ -1,37 +1,37 @@
 .button {
-    position: absolute;
-    width: 9.3em;
-    height: 2em;
-    background: rgba(7, 117, 164, 0.8);   
-    box-shadow: 0px .25em .25em rgba(0, 0, 0, 0.25);
-    border-radius: 0.5em;
-    font-weight: 600;
-    font-size: 1.3rem;
-    color: white;
-    border: 2px solid transparent;
-    /* left: calc(50% - 178.41px/2); */
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -110px; 
-    transition: all 0.1s;
+  position: absolute;
+  font-size: 1.2rem;
+  width: 9.3em;
+  height: 2em;
+  background: rgba(7, 117, 164, 0.8);
+  box-shadow: 0px 0.25em 0.25em rgba(0, 0, 0, 0.25);
+  border-radius: 0.5em;
+  font-weight: 600;
+  color: white;
+  border: 2px solid transparent;
+  /* left: calc(50% - 178.41px/2); */
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -80px;
+  transition: all 0.1s;
 }
 
-@media (hover:hover) {
-    .button:hover {
-        background: hsla(177, 85%, 28%, 0.8);
-        border: 2px solid white;
-    }
+@media (hover: hover) {
+  .button:hover {
+    background: hsla(177, 85%, 28%, 0.8);
+    border: 2px solid white;
+  }
 }
 
 @media (max-width: 576px) {
-    .button {
-        background: hsla(198, 92%, 34%, 0.8);   
-        font-size: 1.2rem;
-        border: none;
-        transition: all 0.1s;
-    }
-    .button:active {
-        background: hsla(177, 85%, 28%, 0.8);
-        border: 2px solid white;
-    }
+  .button {
+    background: hsla(198, 92%, 34%, 0.8);
+    font-size: 1rem;
+    border: none;
+    transition: all 0.1s;
+  }
+  .button:active {
+    background: hsla(177, 85%, 28%, 0.8);
+    border: 2px solid white;
+  }
 }
